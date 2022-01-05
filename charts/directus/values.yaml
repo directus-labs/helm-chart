@@ -8,7 +8,7 @@ image:
   repository: directus/directus 
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v9.0.0-rc.69"
+  tag: "9.4.2"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -56,6 +56,13 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+extraEnvVars: {}
+  # An array to add extra environment variables
+  # E.g.
+  # extraEnvVars:
+  #  - name: STORAGE_LOCATIONS
+  #    value: "s3"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

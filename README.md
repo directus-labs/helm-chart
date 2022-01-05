@@ -1,11 +1,7 @@
-# A Directus Chart
+# Directus Community Helm Charts
 
-Work in progress.
+This is the Community Helm Charts repository for  [Directus](https://directus.io/), the open data platform for headless content management.
+ 
+## Documentation
 
-## To Do
-
-1. Add Documentation
-2. Test on a couple of clusters
-3. Add a values.production.yaml file that deploys an HA setup
-4. Publish chart
-
+Chart documentation is found in [Directus directory](charts/directus/README.md)
