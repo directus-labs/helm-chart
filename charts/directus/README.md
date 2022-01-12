@@ -50,9 +50,40 @@ $ helm delete directus
 | `tolerations`                | List of node taints to tolerate                                                                                                       | `[]`                      |
 | `affinity`                   | Node/Pod affinities                                                                                                                   | `{}`                      |
 | `extraEnvVars`               | Adds extra environment variables.  Refer to [Directus Docs](https://docs.directus.io/configuration/config-options/) for more details. | `{}`                      |
+| `mariadb.enabled`            | Deploys MariaDB server                                                                                                                | `true`                    |
+| `redis.enabled`              | Deploys Redis server                                                                                                                  | `true`                    |
+
+### External Database
+
+If you want to use an external DB, you need to disable MariaDB by adding `mariadb.enabled: false` and add the necessary Environment Variables according to [Directus Documentation](https://docs.directus.io/configuration/config-options/#database).
+
+These variables can be added by using the following values:
+
+```
+extraEnvVars:
+  - name: DB_CLIENT
+    value: mysql
+  ...
+
+```
+
+### External File Storage
+
+By default, Directus stores the uploaded files on the container disk.  Thus the data will be lost when the pod is restarted.  You need to configure Directus to use an external storage adapter such as S3, Google Storage and Azure.  This can be done by adding the necessary Environment Variables as documented in [Directus Documentation](https://docs.directus.io/configuration/config-options/#file-storage).
+
+These variables can be added by using the following values:
+
+```
+extraEnvVars:
+  - name: STORAGE_LOCATIONS
+    value: amazon
+  - name: STORAGE_AMAZON_DRIVER
+    value: s3
+  ...
+
+```
 
 ## To Do
 
 1. Test on a couple of clusters
 2. Add a values.production.yaml file that deploys an HA setup
-3. Publish chart
