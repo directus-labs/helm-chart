@@ -8,7 +8,7 @@ image:
   repository: directus/directus 
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "9.4.3"
+  tag: "9.5.1"
 
 imagePullSecrets: []
 nameOverride: ""
