@@ -3,21 +3,25 @@
 Installs [Directus](https://directus.io/), the open data platform for headless content management via Helm Chart.
 
 ## Install
-To install Directus
+To install Directus, use the following commands.
 
-```
-$ git clone git@github.com:directus/directus.git
-$ cd charts/directus
+1. Add Directus Helm repository:
 
-$ helm dep up
-$ helm install directus .
-```
+    ```sh
+    helm repo add directus https://github.com/directus-community/helm-chart
+    helm repo update
+    ```
+
+2. Install Helm Chart with `directus-release` release name:
+    ```sh
+    helm install directus-release directus/directus
+    ```
 
 ## Uninstall
-To uninstall and delete Directus Helm release
+To uninstall and delete Directus Helm release:
 
-```
-$ helm delete directus 
+```sh
+helm delete directus-release 
 ```
 
 ## Configuration
