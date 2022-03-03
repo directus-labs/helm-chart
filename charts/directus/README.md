@@ -8,7 +8,7 @@ To install Directus, use the following commands.
 1. Add Directus Helm repository:
 
     ```sh
-    helm repo add directus https://github.com/directus-community/helm-chart
+    helm repo add directus https://directus-community.github.io/helm-chart/
     helm repo update
     ```
 
