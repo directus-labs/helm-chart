@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "directus.fullname" . }}-batch-jobsbatch-jobs-role-binding
+  # namespace: example-ns
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "directus.serviceAccountName" . }}
+    # name: {{ include "directus.fullname" . }}-batch-jobs-service-account
+    # namespace: example-ns
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "directus.fullname" . }}-batch-jobs
