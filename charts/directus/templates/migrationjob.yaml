@@ -1,3 +1,4 @@
+{{- if .Values.migration }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -35,4 +36,5 @@ spec:
             {{- if .Values.extraEnvVars }}
             {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
             {{- end }}
-      restartPolicy: {{ .Values.job.restartPolicy }}
+      restartPolicy: {{ .Values.migration.job.restartPolicy }}
+{{- end }}
