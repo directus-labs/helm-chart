@@ -89,6 +89,10 @@ tolerations: []
 
 affinity: {}
 
+extraVolumes: []
+
+extraVolumeMounts: []
+
 mariadb:
   enabled: true
   ## Global Docker image parameters
