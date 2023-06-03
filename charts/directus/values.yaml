@@ -1604,7 +1604,7 @@ redis:
     ##    imagePullPolicy: Always
     ##    command: ['sh', '-c', 'echo "hello world"']
     ##
-    initContainers: {}
+    initContainers: []
     ## Persistence Parameters
     ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
     ##
