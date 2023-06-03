@@ -25,10 +25,10 @@ appVersion: "9.5.1"
 
 dependencies:
 - name: mariadb
-  version: "9.3.13"
+  version: "12.2.4"
   repository: "oci://registry-1.docker.io/bitnamicharts"
   condition: mariadb.enabled
 - name: redis
-  version: "14.3.2"
+  version: "17.11.3"
   repository: "oci://registry-1.docker.io/bitnamicharts"
   condition: redis.enabled
