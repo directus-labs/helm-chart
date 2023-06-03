@@ -11,7 +11,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: charts/matomo
+          directory: charts/directus
           quiet: false # optional: display only failed checks
           soft_fail: true # optional: do not return an error code if there are failed checks
           framework: helm # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
