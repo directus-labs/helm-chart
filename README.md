@@ -1,3 +1,5 @@
+<img src=".github/community-maintained.svg" width="100%" alt="Community-maintained. This project is not maintained by the Directus Core Team, but by our wider community. Interested in taking it on? Get in touch!">
+
 # Directus Community Helm Charts
 
 This is the Community Helm Charts repository for [Directus](https://directus.io/), the open data platform for headless content management.
