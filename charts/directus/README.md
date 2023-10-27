@@ -59,7 +59,7 @@ helm delete directus-release
 
 ### External Database
 
-If you want to use an external DB, you need to disable MariaDB by adding `mariadb.enabled: false` and add the necessary Environment Variables according to [Directus Documentation](https://docs.directus.io/configuration/config-options/#database).
+If you want to use an external DB, you need to disable MariaDB by adding `mariadb.enabled: false` and add the necessary Environment Variables according to [Directus Documentation](https://docs.directus.io/self-hosted/config-options.html#database).
 
 These variables can be added by using the following values:
 
@@ -73,7 +73,7 @@ extraEnvVars:
 
 ### External File Storage
 
-By default, Directus stores the uploaded files on the container disk.  Thus the data will be lost when the pod is restarted.  You need to configure Directus to use an external storage adapter such as S3, Google Storage and Azure.  This can be done by adding the necessary Environment Variables as documented in [Directus Documentation](https://docs.directus.io/configuration/config-options/#file-storage).
+By default, Directus stores the uploaded files on the container disk.  Thus the data will be lost when the pod is restarted.  You need to configure Directus to use an external storage adapter such as S3, Google Storage and Azure.  This can be done by adding the necessary Environment Variables as documented in [Directus Documentation](https://docs.directus.io/self-hosted/config-options.html#file-storage).
 
 These variables can be added by using the following values:
 
