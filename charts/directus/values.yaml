@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: directus/directus 
+  repository: directus/directus
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "9.5.1"
@@ -50,8 +50,11 @@ ingress:
       paths:
       - path: /
         backend:
-          serviceName: chart-example.local
-          servicePort: 80
+          service:
+            name: chart-example.local
+            port:
+              number: 80
+        pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -960,7 +963,7 @@ mariadb:
 
   ## Array with extra yaml to deploy with the chart. Evaluated as a template
   ##
-  extraDeploy: [] 
+  extraDeploy: []
 
 redis:
   enabled: true
