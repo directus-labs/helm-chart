@@ -21,14 +21,14 @@ version: 0.3.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "9.5.1"
+appVersion: "9.18.1"
 
 dependencies:
 - name: mariadb
-  version: "9.3.13"
+  version: "11.3.3"
   repository: "https://charts.bitnami.com/bitnami"
   condition: mariadb.enabled
 - name: redis
-  version: "14.3.2"
+  version: "17.3.5"
   repository: "https://charts.bitnami.com/bitnami"
   condition: redis.enabled
