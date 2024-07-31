@@ -54,6 +54,9 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.mariadb.auth.existingSecret }}
                   key: KEY
+          envFrom:
+            - configMapRef:
+                name: {{ include "directus.fullname" . }}-configmap
             {{- if .Values.ingress.enabled }}
             - name: PUBLIC_URL
               value: http{{ if .Values.ingress.tls }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}
