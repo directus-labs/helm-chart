@@ -14,6 +14,8 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+adminEmail: "admin@example.com"
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -56,32 +58,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-# ToDo: move secret values to the k8s secrets and make them random
-# DB_HOST: MUST be {helm-release-name}-mariadb.default.svc.cluster.local
-# DB_DATABASE MUST be set to the same value as mariadb.auth.database
-# DB_USER MUST be set to the same value as mariadb.auth.username
-# DB_PASSWORD MUST be set to the same value as mariadb.auth.password
-extraEnvVars:
-  - name: DB_CLIENT
-    value: "mysql"
-  - name: DB_HOST
-    value: "directus-mariadb.default.svc.cluster.local"
-  - name: DB_PORT
-    value: "3306"
-  - name: DB_DATABASE
-    value: "directus"
-  - name: DB_USER
-    value: "directus"
-  - name: DB_PASSWORD
-    value: "directus_password"
-  - name: ADMIN_EMAIL
-    value: "admin@example.com"
-  - name: ADMIN_PASSWORD
-    value: "secret_password"
-  - name: SECRET
-    value: "ZkksLHP8T9bYAEVXcJEu"
-  - name: KEY
-    value: "HBdzQQGb4npHNdHRtAH7"
+extraEnvVars: []
+
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -109,19 +87,17 @@ tolerations: []
 affinity: {}
 
 mariadb:
-  enabled: true
+  # The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
+  enableInstallation: true
   auth:
-    ## MariaDB root password
-    ## ref: https://github.com/bitnami/bitnami-docker-mariadb#setting-the-root-password-on-first-run
-    ##
-    rootPassword: "super_root_password"
-    ## MariaDB custom user and database
-    ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
-    ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
-    ##
+    # If you want to use your own mariadb secret, set `createSecrets` to false and 
+    createSecrets: true
+    # The secret has to contain the keys  `mariadb-root-password`, `mariadb-replication-password`, `mariadb-password`, `ADMIN_PASSWORD`, `KEY`, `SECRET`
+    existingSecret: "directus-secret"
     database: directus
     username: "directus"
-    password: "directus_password"
+  # Set the URL to the mariadb instance, otherwise leave it empty to use one that installed in the cluster
+  mariadbURL: ""
 
 redis:
   enabled: true
