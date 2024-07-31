@@ -56,11 +56,16 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+# ToDo: move secret values to the k8s secrets and make them random
+# DB_HOST: MUST be {helm-release-name}-mariadb.default.svc.cluster.local
+# DB_DATABASE MUST be set to the same value as mariadb.auth.database
+# DB_USER MUST be set to the same value as mariadb.auth.username
+# DB_PASSWORD MUST be set to the same value as mariadb.auth.password
 extraEnvVars:
   - name: DB_CLIENT
     value: "mysql"
   - name: DB_HOST
-    value: "directus-mariadb.default..svc.cluster.local"
+    value: "directus-mariadb.default.svc.cluster.local"
   - name: DB_PORT
     value: "3306"
   - name: DB_DATABASE
