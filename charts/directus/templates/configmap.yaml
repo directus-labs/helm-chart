@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "directus.fullname" . }}-configmap
+  labels:
+    app.kubernetes.io/name: {{ include "directus.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    helm.sh/chart: {{ include "directus.chart" . }}
+data:
+  DB_CLIENT: "mysql"
+  DB_HOST: {{- if .Values.mariadb.mariadbURL }} "{{ .Values.mariadb.mariadbURL }}" {{- else }} "{{ .Release.Name }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local" {{- end }}
+  DB_PORT: "3306"
+  DB_DATABASE: "{{ .Values.mariadb.auth.database }}"
+  DB_USER: "{{ .Values.mariadb.auth.username }}"
+  ADMIN_EMAIL: "{{ .Values.adminEmail }}"
