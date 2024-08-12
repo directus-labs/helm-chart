@@ -86,6 +86,10 @@ tolerations: []
 
 affinity: {}
 
+extraVolumes: []
+
+extraVolumeMounts: []
+
 mariadb:
   # The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
   enableInstallation: true
