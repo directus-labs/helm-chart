@@ -1,4 +1,5 @@
 > [!NOTE]  
+
 > This is a community-maintained repository and is not actively maintained by the Directus Core Team.
 
 # Directus Community Helm Charts
