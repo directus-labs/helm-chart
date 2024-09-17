@@ -68,14 +68,18 @@ spec:
             - name: http
               containerPort: 8055
               protocol: TCP
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            {{- toYaml (omit .Values.livenessProbe "enabled") | nindent 12 }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            {{- toYaml (omit .Values.readinessProbe "enabled") | nindent 12 }}
+          {{- end }}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe:
+            {{- toYaml (omit .Values.startupProbe "enabled") | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
