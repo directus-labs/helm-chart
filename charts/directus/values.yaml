@@ -85,21 +85,16 @@ livenessProbe:
   httpGet:
     path: /
     port: http
-  failureThreshold: 5
-  periodSeconds: 10
 readinessProbe:
   enabled: true
   httpGet:
     path: /
     port: http
-  failureThreshold: 5
-  periodSeconds: 10
 startupProbe:
+  enabled: false
   httpGet:
     path: /
     port: http
-  failureThreshold: 30
-  periodSeconds: 10
 
 
 nodeSelector: {}
