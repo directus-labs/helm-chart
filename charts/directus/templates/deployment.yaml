@@ -80,6 +80,14 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
+        {{- if .Values.sidecar.enabled }}
+        - name: {{ .Chart.Name }}-sidecar
+          image: "{{ .Values.sidecar.repository }}:{{ .Values.sidecar.tag }}"
+          imagePullPolicy: {{ .Values.sidecar.pullPolicy }}
+          command: {{ .Values.sidecar.command }}
+          securityContext:
+            {{- toYaml .Values.sidecar.securityContext | nindent 12 }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
