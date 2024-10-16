@@ -34,7 +34,7 @@ helm delete directus-release
 | `replicaCount`               | Number of replicas                                                                                                                   | 1                         |
 | `image.repository`           | Image name                                                                                                                           | `directus/directus`       |
 | `image.pullPolicy`           | Image pull policy                                                                                                                    | `IfNotPresent`            |
-| `image.pullSecrets`          | Image pull secrets                                                                                                                   | `{}`                      |
+| `imagePullSecrets`           | Image pull secrets                                                                                                                   | `{}`                      |
 | `nameOverride`               | Replaces the name of the chart                                                                                                       | --                        |
 | `fullnameOverride`           | Replaces the fully qualified app name                                                                                                | --                        |
 | `serviceAccount.create`      | Create service account                                                                                                               | `true`                    |
