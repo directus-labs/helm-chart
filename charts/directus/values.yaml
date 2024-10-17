@@ -8,11 +8,20 @@ image:
   repository: directus/directus 
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "10.13.1"
+  tag: "11.1.1"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+sidecar:
+  enabled: true
+  repository: alpine
+  tag: latest
+  pullPolicy: Always
+  command: ['sleep', '3600']
+  securityContext: {}
+    # allowPrivilegeEscalation: true
 
 adminEmail: "admin@example.com"
 
@@ -111,7 +120,7 @@ mariadb:
   # The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
   enableInstallation: true
   auth:
-    # If you want to use your own mariadb secret, set `createSecrets` to false and 
+    # If you want to use your own mariadb secret, set `createSecrets` to false and update `mariadb.auth.existingSecret` field with the correct secret name
     createSecrets: true
     # The secret has to contain the keys  `mariadb-root-password`, `mariadb-replication-password`, `mariadb-password`, `ADMIN_PASSWORD`, `KEY`, `SECRET`
     existingSecret: "directus-secret"
