@@ -14,6 +14,15 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+sidecar:
+  enabled: true
+  repository: alpine
+  tag: latest
+  pullPolicy: Always
+  command: ['sleep', '3600']
+  securityContext: {}
+    # allowPrivilegeEscalation: true
+
 adminEmail: "admin@example.com"
 
 serviceAccount:
