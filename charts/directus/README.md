@@ -70,5 +70,12 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| sidecar.command[0] | string | `"sleep"` |  |
+| sidecar.command[1] | string | `"3600"` |  |
+| sidecar.enabled | bool | `true` |  |
+| sidecar.pullPolicy | string | `"Always"` |  |
+| sidecar.repository | string | `"alpine"` |  |
+| sidecar.securityContext | object | `{}` |  |
+| sidecar.tag | string | `"latest"` |  |
 | tolerations | list | `[]` |  |
 
