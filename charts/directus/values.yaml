@@ -19,7 +19,9 @@ sidecar:
   repository: alpine
   tag: latest
   pullPolicy: Always
-  command: ['-c', 'sleep', '3600']
+  command: 
+    - -c
+    - sleep 3600;
   securityContext: {}
     # allowPrivilegeEscalation: true
 

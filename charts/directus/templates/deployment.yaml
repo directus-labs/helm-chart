@@ -88,7 +88,10 @@ spec:
         - name: {{ .Chart.Name }}-sidecar
           image: "{{ .Values.sidecar.repository }}:{{ .Values.sidecar.tag }}"
           imagePullPolicy: {{ .Values.sidecar.pullPolicy }}
-          command: {{ .Values.sidecar.command }}
+          {{- with .Values.sidecar.command }}
+          command:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           securityContext:
             {{- toYaml .Values.sidecar.securityContext | nindent 12 }}
         {{- end }}
