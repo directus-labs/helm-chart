@@ -50,6 +50,9 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"Prefix"` |  |
 | ingress.tls | list | `[]` |  |
+| livenessProbe.enabled | bool | `true` |  |
+| livenessProbe.httpGet.path | string | `"/"` |  |
+| livenessProbe.httpGet.port | string | `"http"` |  |
 | mariadb.auth.createSecrets | bool | `true` |  |
 | mariadb.auth.database | string | `"directus"` |  |
 | mariadb.auth.existingSecret | string | `"directus-secret"` |  |
@@ -60,6 +63,9 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| readinessProbe.enabled | bool | `true` |  |
+| readinessProbe.httpGet.path | string | `"/"` |  |
+| readinessProbe.httpGet.port | string | `"http"` |  |
 | redis.enabled | bool | `true` |  |
 | redis.replica.replicaCount | int | `0` |  |
 | replicaCount | int | `1` |  |
@@ -70,12 +76,16 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| sidecar.command[0] | string | `"sleep"` |  |
-| sidecar.command[1] | string | `"3600"` |  |
-| sidecar.enabled | bool | `true` |  |
+| sidecar.command[0] | string | `"/bin/sh"` |  |
+| sidecar.command[1] | string | `"-c"` |  |
+| sidecar.command[2] | string | `"sleep 3600;"` |  |
+| sidecar.enabled | bool | `false` |  |
 | sidecar.pullPolicy | string | `"Always"` |  |
-| sidecar.repository | string | `"alpine"` |  |
+| sidecar.repository | string | `"busybox"` |  |
 | sidecar.securityContext | object | `{}` |  |
 | sidecar.tag | string | `"latest"` |  |
+| startupProbe.enabled | bool | `false` |  |
+| startupProbe.httpGet.path | string | `"/"` |  |
+| startupProbe.httpGet.port | string | `"http"` |  |
 | tolerations | list | `[]` |  |
 
