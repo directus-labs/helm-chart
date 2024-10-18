@@ -15,11 +15,12 @@ nameOverride: ""
 fullnameOverride: ""
 
 sidecar:
-  enabled: true
-  repository: alpine
+  enabled: false
+  repository: busybox
   tag: latest
   pullPolicy: Always
   command: 
+    - /bin/sh
     - -c
     - sleep 3600;
   securityContext: {}
