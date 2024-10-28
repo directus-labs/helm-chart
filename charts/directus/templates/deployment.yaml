@@ -61,9 +61,12 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.mariadb.auth.existingSecret }}
                   key: KEY
-            {{- if .Values.ingress.enabled }}
-            - name: PUBLIC_URL
-              value: http{{ if .Values.ingress.tls }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}
+            {{- if .Values.redis.enabled }}
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-redis
+                  key: redis-password
             {{- end }}
             {{- if .Values.extraEnvVars }}
             {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
