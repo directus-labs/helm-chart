@@ -1,6 +1,6 @@
 # directus
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.1.1](https://img.shields.io/badge/AppVersion-11.1.1-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.1.2](https://img.shields.io/badge/AppVersion-11.1.2-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -31,6 +31,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 |-----|------|---------|-------------|
 | adminEmail | string | `"admin@example.com"` |  |
 | affinity | object | `{}` |  |
+| attachExistingSecrets | list | `[]` |  |
 | autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
@@ -41,7 +42,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"directus/directus"` |  |
-| image.tag | string | `"11.1.1"` |  |
+| image.tag | string | `"11.1.2"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
