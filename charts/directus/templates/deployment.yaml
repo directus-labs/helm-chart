@@ -34,6 +34,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
+            {{- range $val := .Values.attachExistingSecrets }}
+            - secretRef:
+                name: {{ $val }}
+            {{- end }}
             - configMapRef:
                 name: {{ include "directus.fullname" . }}-configmap
           env:
