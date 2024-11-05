@@ -137,5 +137,7 @@ mariadb:
 
 redis:
   enabled: true
+  auth:
+    enabled: false
   replica:
     replicaCount: 0
