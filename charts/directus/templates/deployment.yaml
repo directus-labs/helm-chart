@@ -63,7 +63,7 @@ spec:
                   key: KEY
             {{- if .Values.ingress.enabled }}
             - name: PUBLIC_URL
-              value: http{{ if .Values.ingress.tls }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}
+              value: http{{ if .Values.ingress.enableTLS }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}
             {{- end }}
             {{- if .Values.extraEnvVars }}
             {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
