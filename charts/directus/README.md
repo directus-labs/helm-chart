@@ -1,6 +1,6 @@
 # directus
 
-![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.1.2](https://img.shields.io/badge/AppVersion-11.1.2-informational?style=flat-square)
+![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.2.1](https://img.shields.io/badge/AppVersion-11.2.1-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -39,28 +39,27 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | extraEnvVars | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"directus/directus"` |  |
-| image.tag | string | `"11.1.2"` |  |
-| imagePullSecrets | list | `[]` |  |
-| ingress.annotations | object | `{}` |  |
+| fullnameOverride | string | `""` | Completely overrides Chart name |
+| image.pullPolicy | string | `"IfNotPresent"` | Pull policy for docker image |
+| image.repository | string | `"directus/directus"` | Directus image docker repository |
+| image.tag | string | `"11.1.2"` | Overrides the image tag whose default is the chart appVersion. |
+| imagePullSecrets | list | `[]` | Image Pull Secrets in k8s for docker image |
+| ingress.annotations | object | `{}` | Ingress annotations. Usually used in cloud environments |
 | ingress.className | string | `""` |  |
+| ingress.enableTLS | bool | `true` | Enable TLS in PUBLIC_URL |
 | ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths[0].path | string | `"/"` |  |
-| ingress.hosts[0].paths[0].pathType | string | `"Prefix"` |  |
+| ingress.hosts[0] | object | `{"host":"chart-example.local","paths":[{"path":"/","pathType":"Prefix"}]}` | Hostname to expose. You should create CNAME DNS record with this hostname to redirect to ALB DNS name |
 | ingress.tls | list | `[]` |  |
 | livenessProbe.enabled | bool | `true` |  |
 | livenessProbe.httpGet.path | string | `"/"` |  |
 | livenessProbe.httpGet.port | string | `"http"` |  |
-| mariadb.auth.createSecrets | bool | `true` |  |
-| mariadb.auth.database | string | `"directus"` |  |
-| mariadb.auth.existingSecret | string | `"directus-secret"` |  |
-| mariadb.auth.username | string | `"directus"` |  |
-| mariadb.enableInstallation | bool | `true` |  |
-| mariadb.mariadbURL | string | `""` |  |
-| nameOverride | string | `""` |  |
+| mariadb.auth.createSecrets | bool | `true` | If you want to use your own mariadb secret, set `createSecrets` to false and update `mariadb.auth.existingSecret` field with the correct secret name |
+| mariadb.auth.database | string | `"directus"` | Directus datatbase name |
+| mariadb.auth.existingSecret | string | `"directus-secret"` | The secret has to contain the following keys `mariadb-root-password`, `mariadb-replication-password`, `mariadb-password`, `ADMIN_PASSWORD`, `KEY`, `SECRET` |
+| mariadb.auth.username | string | `"directus"` | The user that is being used to connect to database |
+| mariadb.enableInstallation | bool | `true` | The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation |
+| mariadb.mariadbURL | string | `""` | The URL to the mariadb instance, otherwise leave it empty to use one that installed in the cluster |
+| nameOverride | string | `""` | Helm name override in Chart.yaml. This name is being used for resource naming |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
@@ -74,13 +73,11 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | securityContext | object | `{}` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
-| serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `""` |  |
-| sidecar.command[0] | string | `"/bin/sh"` |  |
-| sidecar.command[1] | string | `"-c"` |  |
-| sidecar.command[2] | string | `"sleep 3600;"` |  |
-| sidecar.enabled | bool | `false` |  |
+| serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
+| serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
+| serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
+| sidecar.command | list | `["/bin/sh","-c","sleep 3600;"]` | Command to run in sidecar docker image |
+| sidecar.enabled | bool | `false` | Sidecars for Directus pod |
 | sidecar.pullPolicy | string | `"Always"` |  |
 | sidecar.repository | string | `"busybox"` |  |
 | sidecar.securityContext | object | `{}` |  |
