@@ -5,20 +5,27 @@
 replicaCount: 1
 
 image:
-  repository: directus/directus 
+  # -- Directus image docker repository
+  repository: directus/directus
+  # -- Pull policy for docker image
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+  # -- Overrides the image tag whose default is the chart appVersion.
   tag: "11.1.2"
 
+# -- Image Pull Secrets in k8s for docker image
 imagePullSecrets: []
+# -- Helm name override in Chart.yaml. This name is being used for resource naming
 nameOverride: ""
+# -- Completely overrides Chart name
 fullnameOverride: ""
 
 sidecar:
+  # -- Sidecars for Directus pod
   enabled: false
   repository: busybox
   tag: latest
   pullPolicy: Always
+  # -- Command to run in sidecar docker image
   command: 
     - /bin/sh
     - -c
@@ -29,12 +36,11 @@ sidecar:
 adminEmail: "admin@example.com"
 
 serviceAccount:
-  # Specifies whether a service account should be created
+  # -- Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account
+  # -- Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
+  # -- The name of the service account to use. If not set and create is true, a name is generated using the fullname template
   name: ""
 
 podAnnotations: {}
@@ -56,12 +62,15 @@ service:
 
 ingress:
   enabled: false
+  # -- Enable TLS in PUBLIC_URL
   enableTLS: true
   className: ""
+  # -- Ingress annotations. Usually used in cloud environments
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
+    # -- Hostname to expose. You should create CNAME DNS record with this hostname to redirect to ALB DNS name
     - host: chart-example.local
       paths:
         - path: /
@@ -124,16 +133,25 @@ extraVolumeMounts: []
 
 
 mariadb:
-  # The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
+  # -- The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
   enableInstallation: true
   auth:
-    # If you want to use your own mariadb secret, set `createSecrets` to false and update `mariadb.auth.existingSecret` field with the correct secret name
+    # -- If you want to use your own mariadb secret,
+    # set `createSecrets` to false and update `mariadb.auth.existingSecret` field with the correct secret name
     createSecrets: true
-    # The secret has to contain the keys  `mariadb-root-password`, `mariadb-replication-password`, `mariadb-password`, `ADMIN_PASSWORD`, `KEY`, `SECRET`
+    # -- The secret has to contain the following keys
+    # `mariadb-root-password`,
+    # `mariadb-replication-password`,
+    # `mariadb-password`,
+    # `ADMIN_PASSWORD`,
+    # `KEY`,
+    # `SECRET`
     existingSecret: "directus-secret"
+    # -- Directus datatbase name
     database: directus
+    # -- The user that is being used to connect to database
     username: "directus"
-  # Set the URL to the mariadb instance, otherwise leave it empty to use one that installed in the cluster
+  # -- The URL to the mariadb instance, otherwise leave it empty to use one that installed in the cluster
   mariadbURL: ""
 
 redis:
