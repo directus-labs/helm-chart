@@ -155,9 +155,13 @@ mariadb:
   mariadbURL: ""
 
 redis:
+# -- Switch to enable Redis
   enabled: true
   auth:
+    # -- Existing secret name with Redis password
     existingSecret: ""
+    # -- The key in the secret with password 
     existingSecretPasswordKey: ""
   replica:
+    # -- Amount of Redis replicas
     replicaCount: 0
