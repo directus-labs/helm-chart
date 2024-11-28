@@ -14,3 +14,9 @@ data:
   DB_DATABASE: "{{ .Values.mariadb.auth.database }}"
   DB_USER: "{{ .Values.mariadb.auth.username }}"
   ADMIN_EMAIL: "{{ .Values.adminEmail }}"
+  REDIS_ENABLED: {{- if .Values.redis.enabled }} "true" {{- else }} "false" {{- end }}
+  {{- if .Values.redis.enabled}}
+  REDIS_HOST: {{ .Release.Name }}-redis-master
+  REDIS_PORT: "6379"
+  REDIS_USERNAME: "default"
+  {{- end}}
