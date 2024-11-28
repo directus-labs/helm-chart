@@ -65,6 +65,13 @@ spec:
             - name: PUBLIC_URL
               value: http{{ if .Values.ingress.enableTLS }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}
             {{- end }}
+            {{- if .Values.redis.enabled}}
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-redis
+                  key: redis-password
+            {{- end }}
             {{- if .Values.extraEnvVars }}
             {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
             {{- end }}
