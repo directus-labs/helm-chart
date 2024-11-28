@@ -1,6 +1,6 @@
 # directus
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.2.1](https://img.shields.io/badge/AppVersion-11.2.1-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.2.2](https://img.shields.io/badge/AppVersion-11.2.2-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -66,8 +66,10 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | readinessProbe.enabled | bool | `true` |  |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
-| redis.enabled | bool | `true` |  |
-| redis.replica.replicaCount | int | `0` |  |
+| redis.auth.existingSecret | string | `""` | Existing secret name with Redis password |
+| redis.auth.existingSecretPasswordKey | string | `""` | The key in the secret with password  |
+| redis.enabled | bool | `true` | Switch to enable Redis |
+| redis.replica.replicaCount | int | `0` | Amount of Redis replicas |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
