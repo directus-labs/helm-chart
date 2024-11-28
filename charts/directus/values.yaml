@@ -156,5 +156,8 @@ mariadb:
 
 redis:
   enabled: true
+  auth:
+    existingSecret: ""
+    existingSecretPasswordKey: ""
   replica:
     replicaCount: 0

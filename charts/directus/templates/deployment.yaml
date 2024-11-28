@@ -69,8 +69,8 @@ spec:
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-redis
-                  key: redis-password
+                  name: {{- if .Values.redis.auth.existingSecret}} {{ .Values.redis.auth.existingSecret }} {{- else }} {{ .Release.Name }}-redis {{- end }}
+                  key: {{- if .Values.redis.auth.existingSecretPasswordKey }} {{ .Values.redis.auth.existingSecretPasswordKey }} {{- else }} redis-password {{- end }}
             {{- end }}
             {{- if .Values.extraEnvVars }}
             {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
