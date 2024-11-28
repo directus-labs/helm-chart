@@ -10,7 +10,7 @@ image:
   # -- Pull policy for docker image
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
-  tag: "11.1.2"
+  tag: ""
 
 # -- Image Pull Secrets in k8s for docker image
 imagePullSecrets: []
