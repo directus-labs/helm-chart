@@ -19,6 +19,12 @@ nameOverride: ""
 # -- Completely overrides Chart name
 fullnameOverride: ""
 
+# -- Init Containers for Directus pod
+initContainers: []
+
+# -- Sidecars for Directus pod
+sidecars: []
+
 sidecar:
   # -- Sidecars for Directus pod
   enabled: false
