@@ -19,8 +19,8 @@ maintainers:
     email: sindieiev@protonmail.ch
     url: https://github.com/directus-labs/helm-chart
 
-version: 1.1.0
-appVersion: "11.2.2"
+version: 1.2.0
+appVersion: "11.3.2"
 
 dependencies:
 - name: mariadb
