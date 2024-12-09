@@ -43,6 +43,7 @@ sidecars: []
 #      - sleep 3600;
 
 sidecar:
+  # IMPORTANT! This feature is going to be DEPRECATED in the next release in favour of `sidecars`
   # -- Sidecars for Directus pod
   enabled: false
   repository: busybox
