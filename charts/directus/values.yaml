@@ -19,6 +19,29 @@ nameOverride: ""
 # -- Completely overrides Chart name
 fullnameOverride: ""
 
+# -- Init Containers for Directus pod
+initContainers: []
+#  - name: myinitcontainer
+#    image: alpine:latest
+#    restartPolicy: Always
+#    command:
+#      - sh
+#      - -c
+#      - cat /opt/file.txt
+#    volumeMounts:
+#      - name: opt
+#        mountPath: /opt
+
+# -- Sidecars for Directus pod
+sidecars: []
+#  - name: busybox
+#    image: busybox:latest
+#    imagePullPolicy: Always
+#    command:
+#      - /bin/sh
+#      - -c
+#      - sleep 3600;
+
 sidecar:
   # -- Sidecars for Directus pod
   enabled: false
