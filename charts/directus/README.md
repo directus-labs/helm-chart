@@ -1,6 +1,6 @@
 # directus
 
-![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.2.2](https://img.shields.io/badge/AppVersion-11.2.2-informational?style=flat-square)
+![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.3.2](https://img.shields.io/badge/AppVersion-11.3.2-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -42,7 +42,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | fullnameOverride | string | `""` | Completely overrides Chart name |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy for docker image |
 | image.repository | string | `"directus/directus"` | Directus image docker repository |
-| image.tag | string | `"11.1.2"` | Overrides the image tag whose default is the chart appVersion. |
+| image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Image Pull Secrets in k8s for docker image |
 | ingress.annotations | object | `{}` | Ingress annotations. Usually used in cloud environments |
 | ingress.className | string | `""` |  |
@@ -50,6 +50,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts[0] | object | `{"host":"chart-example.local","paths":[{"path":"/","pathType":"Prefix"}]}` | Hostname to expose. You should create CNAME DNS record with this hostname to redirect to ALB DNS name |
 | ingress.tls | list | `[]` |  |
+| initContainers | list | `[]` | Init Containers for Directus pod |
 | livenessProbe.enabled | bool | `true` |  |
 | livenessProbe.httpGet.path | string | `"/"` |  |
 | livenessProbe.httpGet.port | string | `"http"` |  |
@@ -84,6 +85,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | sidecar.repository | string | `"busybox"` |  |
 | sidecar.securityContext | object | `{}` |  |
 | sidecar.tag | string | `"latest"` |  |
+| sidecars | list | `[]` | Sidecars for Directus pod |
 | startupProbe.enabled | bool | `false` |  |
 | startupProbe.httpGet.path | string | `"/"` |  |
 | startupProbe.httpGet.port | string | `"http"` |  |
