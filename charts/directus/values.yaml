@@ -155,6 +155,8 @@ extraVolumes: []
 
 extraVolumeMounts: []
 
+# -- Database engine. Could be set to one value from the following list: mariadb
+databaseEngine: "mariadb" 
 
 mariadb:
   # -- The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
@@ -179,7 +181,7 @@ mariadb:
   mariadbURL: ""
 
 redis:
-# -- Switch to enable Redis
+  # -- Switch to enable Redis
   enabled: true
   auth:
     # -- Existing secret name with Redis password
