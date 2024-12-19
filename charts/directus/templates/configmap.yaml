@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     helm.sh/chart: {{ include "directus.chart" . }}
 data:
-  DB_CLIENT: "mysql"
+  DB_CLIENT: {{ .Values.databaseEngine }}
   DB_HOST: {{- if .Values.mariadb.mariadbURL }} "{{ .Values.mariadb.mariadbURL }}" {{- else }} "{{ .Release.Name }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local" {{- end }}
   DB_PORT: "3306"
   DB_DATABASE: "{{ .Values.mariadb.auth.database }}"

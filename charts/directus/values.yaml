@@ -155,8 +155,10 @@ extraVolumes: []
 
 extraVolumeMounts: []
 
-# -- Database engine. Could be set to one value from the following list: mariadb
-databaseEngine: "mariadb" 
+# -- Database engine. Could be set to one value from the following list: mysql
+# Please not if you use mariadb server, set databaseEngine to 'mysql' value. 
+# Details are here - https://docs.directus.io/self-hosted/config-options.html#database
+databaseEngine: "mysql"
 
 mariadb:
   # -- The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation
