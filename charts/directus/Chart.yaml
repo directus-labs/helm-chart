@@ -23,10 +23,10 @@ version: 1.2.0
 appVersion: "11.3.2"
 
 dependencies:
-- name: mariadb
-  version: "~18.0.2"
+- name: mysql
+  version: "~12.2.1"
   repository: "https://charts.bitnami.com/bitnami"
-  condition: mariadb.enableInstallation
+  condition: mysql.enableInstallation
 - name: redis
   version: "~19.6.4"
   repository: "https://charts.bitnami.com/bitnami"
