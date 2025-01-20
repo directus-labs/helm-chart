@@ -156,8 +156,9 @@ extraVolumes: []
 extraVolumeMounts: []
 
 # -- This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets
-# If it is set to false, you MUST set these variables manually via existing secret resource
+# If it is set to false, you MUST set these variables manually via existing secret resource and set its name below
 createApplicationSecret: false
+existingApplicationSecret: "directus-application-secret"
 
 # -- Database engine. Could be set to one value from the following list: mysql, postresql
 # Please disable installations for other database engines in this chart
