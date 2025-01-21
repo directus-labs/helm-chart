@@ -27,6 +27,10 @@ dependencies:
   version: "~12.2.1"
   repository: "https://charts.bitnami.com/bitnami"
   condition: mysql.enableInstallation
+- name: postgresql
+  version: "~16.4.3"
+  repository: "https://charts.bitnami.com/bitnami"
+  condition: postgresql.enableInstallation
 - name: redis
   version: "~19.6.4"
   repository: "https://charts.bitnami.com/bitnami"
