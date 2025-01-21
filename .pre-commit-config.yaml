@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: [ '--maxkb=128' ]
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: detect-aws-credentials
+        args: [ '--allow-missing-credentials' ]
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [ --fix=lf ]
+      - id: no-commit-to-branch
+        args: [--branch, dev, --branch, main]
+      - id: pretty-format-json
+        args: [ --autofix, --no-sort-keys, --indent, "4" ]
+      - id: trailing-whitespace
+        args: [ --markdown-linebreak-ext=md ]
