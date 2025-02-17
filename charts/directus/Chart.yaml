@@ -20,7 +20,7 @@ maintainers:
     url: https://github.com/directus-labs/helm-chart
 
 version: 2.0.0
-appVersion: "11.4.0"
+appVersion: "11.4.1"
 
 dependencies:
 - name: mysql
