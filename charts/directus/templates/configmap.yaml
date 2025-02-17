@@ -9,10 +9,10 @@ metadata:
     helm.sh/chart: {{ include "directus.chart" . }}
 data:
   DB_CLIENT: {{ .Values.databaseEngine }}
-  DB_HOST: {{- if .Values.mariadb.mariadbURL }} "{{ .Values.mariadb.mariadbURL }}" {{- else }} "{{ .Release.Name }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local" {{- end }}
+  DB_HOST: {{- if .Values.mysql.mysqlURL }} "{{ .Values.mysql.mysqlURL }}" {{- else }} "{{ .Release.Name }}-mysql.{{ .Release.Namespace }}.svc.cluster.local" {{- end }}
   DB_PORT: "3306"
-  DB_DATABASE: "{{ .Values.mariadb.auth.database }}"
-  DB_USER: "{{ .Values.mariadb.auth.username }}"
+  DB_DATABASE: "{{ .Values.mysql.auth.database }}"
+  DB_USER: "{{ .Values.mysql.auth.username }}"
   ADMIN_EMAIL: "{{ .Values.adminEmail }}"
   REDIS_ENABLED: {{- if .Values.redis.enabled }} "true" {{- else }} "false" {{- end }}
   {{- if .Values.redis.enabled}}

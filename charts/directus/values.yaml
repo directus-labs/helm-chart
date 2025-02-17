@@ -158,7 +158,8 @@ extraVolumeMounts: []
 # -- This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets
 # If it is set to false, you MUST set these variables manually via existing secret resource and set its name below
 createApplicationSecret: false
-existingApplicationSecret: "directus-application-secret"
+
+applicationSecretName: "directus-application-secret"
 
 # -- Database engine. Could be set to one value from the following list: mysql, postresql
 # Please disable installations for other database engines in this chart
@@ -179,7 +180,8 @@ createPostgresqlSecret: false
 createMysqlSecret: false
 
 mysql:
-  # -- The switch to switch off the installation of the mysql, the rest of the settings are being used during the installation and for DB connection
+  # -- The switch to switch off the installation of the mysql
+  # The rest of the settings are being used during the installation and for DB connection
   # Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml
   enableInstallation: true
   auth:
@@ -189,11 +191,14 @@ mysql:
   # If you want to use your own mysql or mariadb insance, please provide the URL to the existing instance in `mysqlURL`
   # Otherwise leave it empty to use mysql that being installed in the cluster with this chart
   # Please note mysql.auth.database will be used as a name of the database
+  # and mysql.auth.username will be used as username during the connection
   mysqlURL: ""
 
 postgresql:
-  enableInstallation: false
+  # -- The switch to switch off the installation of the postgresql
+  # The rest of the settings are being used during the installation and for DB connection
   # Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
+  enableInstallation: false
   auth:
     existingSecret: "directus-postgresql-secret"
     database: "directus"
