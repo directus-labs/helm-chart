@@ -157,7 +157,7 @@ extraVolumeMounts: []
 
 # -- This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets
 # If it is set to false, you MUST set these variables manually via existing secret resource and set its name below
-createApplicationSecret: false
+createApplicationSecret: true
 
 applicationSecretName: "directus-application-secret"
 
@@ -177,7 +177,7 @@ createPostgresqlSecret: false
 # If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created
 # Please consult the official bitnami mysql values file - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152
 # If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings setion
-createMysqlSecret: false
+createMysqlSecret: true
 
 mysql:
   # -- The switch to switch off the installation of the mysql
