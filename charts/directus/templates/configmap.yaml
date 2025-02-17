@@ -10,9 +10,9 @@ metadata:
 data:
   DB_CLIENT: {{ .Values.databaseEngine }}
   DB_HOST: {{- if .Values.mysql.mysqlURL }} "{{ .Values.mysql.mysqlURL }}" {{- else }} "{{ .Release.Name }}-mysql.{{ .Release.Namespace }}.svc.cluster.local" {{- end }}
-  DB_PORT: "3306"
-  DB_DATABASE: "{{ .Values.mysql.auth.database }}"
-  DB_USER: "{{ .Values.mysql.auth.username }}"
+  DB_PORT: {{- if eq .Values.databaseEngine "mysql" }} "3306" {{- else if eq .Values.databaseEngine "postgresql" }} "5432" {{- else }} "" {{- end }}
+  DB_DATABASE: {{- if eq .Values.databaseEngine "mysql" }} {{ .Values.mysql.auth.database }} {{- else if eq .Values.databaseEngine "postgresql" }} {{ .Values.postgresql.auth.database }} {{- else }} "" {{- end }}
+  DB_USER: {{- if eq .Values.databaseEngine "mysql" }} {{ .Values.mysql.auth.username }} {{- else if eq .Values.databaseEngine "postgresql" }} {{ .Values.postgresql.auth.username }} {{- else }} "" {{- end }}
   ADMIN_EMAIL: "{{ .Values.adminEmail }}"
   REDIS_ENABLED: {{- if .Values.redis.enabled }} "true" {{- else }} "false" {{- end }}
   {{- if .Values.redis.enabled}}

@@ -186,8 +186,8 @@ mysql:
   enableInstallation: true
   auth:
     existingSecret: "directus-mysql-secret"
-    database: "directus"
-    username: "directus"
+    database: "directus_mysql"
+    username: "directus_mysql"
   # If you want to use your own mysql or mariadb insance, please provide the URL to the existing instance in `mysqlURL`
   # Otherwise leave it empty to use mysql that being installed in the cluster with this chart
   # Please note mysql.auth.database will be used as a name of the database
@@ -201,8 +201,8 @@ postgresql:
   enableInstallation: false
   auth:
     existingSecret: "directus-postgresql-secret"
-    database: "directus"
-    username: "directus"
+    database: "directus_postgres"
+    username: "directus_postgres"
   # If you want to use your own postgresql, please provide the URL to the existing instance in `postgresqlURL`
   # Otherwise leave it empty to use postgresql server that being installed in the cluster with this chart
   # Please note postgresql.auth.database will be used as a name of the database
