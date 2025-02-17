@@ -24,14 +24,14 @@ appVersion: "11.4.0"
 
 dependencies:
 - name: mysql
-  version: "~12.2.1"
+  version: "~12.2.2"
   repository: "https://charts.bitnami.com/bitnami"
   condition: mysql.enableInstallation
 - name: postgresql
-  version: "~16.4.3"
+  version: "~16.4.9"
   repository: "https://charts.bitnami.com/bitnami"
   condition: postgresql.enableInstallation
 - name: redis
-  version: "~19.6.4"
+  version: "~20.7.1"
   repository: "https://charts.bitnami.com/bitnami"
   condition: redis.enabled
