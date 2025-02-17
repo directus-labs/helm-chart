@@ -45,11 +45,19 @@ spec:
             - configMapRef:
                 name: {{ include "directus.fullname" . }}-configmap
           env:
+            {{- if eq .Values.databaseEngine "mysql" }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.mysql.auth.existingSecret }}
                   key: mysql-password
+            {{- else if eq .Values.databaseEngine "postgresql" }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: password
+            {{- end }}
             - name: ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
