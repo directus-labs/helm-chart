@@ -45,25 +45,33 @@ spec:
             - configMapRef:
                 name: {{ include "directus.fullname" . }}-configmap
           env:
+            {{- if eq .Values.databaseEngine "mysql" }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mariadb.auth.existingSecret }}
-                  key: mariadb-password
+                  name: {{ .Values.mysql.auth.existingSecret }}
+                  key: mysql-password
+            {{- else if eq .Values.databaseEngine "postgresql" }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: password
+            {{- end }}
             - name: ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mariadb.auth.existingSecret }}
+                  name: {{ .Values.applicationSecretName }}
                   key: ADMIN_PASSWORD
             - name: SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mariadb.auth.existingSecret }}
+                  name: {{ .Values.applicationSecretName }}
                   key: SECRET
             - name: KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mariadb.auth.existingSecret }}
+                  name: {{ .Values.applicationSecretName }}
                   key: KEY
             {{- if .Values.ingress.enabled }}
             - name: PUBLIC_URL

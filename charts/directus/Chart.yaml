@@ -19,15 +19,19 @@ maintainers:
     email: sindieiev@protonmail.ch
     url: https://github.com/directus-labs/helm-chart
 
-version: 1.2.0
-appVersion: "11.3.2"
+version: 2.0.0
+appVersion: "11.4.1"
 
 dependencies:
-- name: mariadb
-  version: "~18.0.2"
+- name: mysql
+  version: "~12.2.2"
   repository: "https://charts.bitnami.com/bitnami"
-  condition: mariadb.enableInstallation
+  condition: mysql.enableInstallation
+- name: postgresql
+  version: "~16.4.9"
+  repository: "https://charts.bitnami.com/bitnami"
+  condition: postgresql.enableInstallation
 - name: redis
-  version: "~19.6.4"
+  version: "~20.7.1"
   repository: "https://charts.bitnami.com/bitnami"
   condition: redis.enabled
