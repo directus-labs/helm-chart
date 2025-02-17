@@ -1,6 +1,6 @@
 # directus
 
-![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.3.2](https://img.shields.io/badge/AppVersion-11.3.2-informational?style=flat-square)
+![Version: 2.0.0](https://img.shields.io/badge/Version-2.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.4.1](https://img.shields.io/badge/AppVersion-11.4.1-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -22,20 +22,26 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mariadb | ~18.0.2 |
-| https://charts.bitnami.com/bitnami | redis | ~19.6.4 |
+| https://charts.bitnami.com/bitnami | mysql | ~12.2.2 |
+| https://charts.bitnami.com/bitnami | postgresql | ~16.4.9 |
+| https://charts.bitnami.com/bitnami | redis | ~20.7.1 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| adminEmail | string | `"admin@example.com"` |  |
+| adminEmail | string | `"directus-admin@example.com"` |  |
 | affinity | object | `{}` |  |
+| applicationSecretName | string | `"directus-application-secret"` |  |
 | attachExistingSecrets | list | `[]` |  |
 | autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| createApplicationSecret | bool | `true` | This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets If it is set to false, you MUST set these variables manually via existing secret resource and set its name below |
+| createMysqlSecret | bool | `true` | Create MySQL secret in Directus chart If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created Please consult the official bitnami mysql values file - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152 If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings setion |
+| createPostgresqlSecret | bool | `false` | Create PostgreSQL secret in Directus chart If set to enable, postgresql secret with values of `postgres-password`, `password`, and `replication-password` variables will be created Please consult the official bitnami postgres values file - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml#L164 If set to false, you MUST create a secret resource in k8s for postgresql installation and set the correct value to the `existingSecret` in the postgresql settings setion |
+| databaseEngine | string | `"mysql"` | Database engine. Could be set to one value from the following list: mysql, postresql Please disable installations for other database engines in this chart Please not if you use mariadb server, set databaseEngine to 'mysql' value Details are here - https://docs.directus.io/self-hosted/config-options.html#database |
 | extraEnvVars | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
@@ -54,21 +60,25 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | livenessProbe.enabled | bool | `true` |  |
 | livenessProbe.httpGet.path | string | `"/"` |  |
 | livenessProbe.httpGet.port | string | `"http"` |  |
-| mariadb.auth.createSecrets | bool | `true` | If you want to use your own mariadb secret, set `createSecrets` to false and update `mariadb.auth.existingSecret` field with the correct secret name |
-| mariadb.auth.database | string | `"directus"` | Directus datatbase name |
-| mariadb.auth.existingSecret | string | `"directus-secret"` | The secret has to contain the following keys `mariadb-root-password`, `mariadb-replication-password`, `mariadb-password`, `ADMIN_PASSWORD`, `KEY`, `SECRET` |
-| mariadb.auth.username | string | `"directus"` | The user that is being used to connect to database |
-| mariadb.enableInstallation | bool | `true` | The switch to switch off the installation of the mariadb, the rest of the settings are being used during the installation |
-| mariadb.mariadbURL | string | `""` | The URL to the mariadb instance, otherwise leave it empty to use one that installed in the cluster |
+| mysql.auth.database | string | `"directus_mysql"` |  |
+| mysql.auth.existingSecret | string | `"directus-mysql-secret"` |  |
+| mysql.auth.username | string | `"directus_mysql"` |  |
+| mysql.enableInstallation | bool | `true` | The switch to switch off the installation of the mysql The rest of the settings are being used during the installation and for DB connection Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml |
+| mysql.mysqlURL | string | `""` |  |
 | nameOverride | string | `""` | Helm name override in Chart.yaml. This name is being used for resource naming |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| postgresql.auth.database | string | `"directus_postgres"` |  |
+| postgresql.auth.existingSecret | string | `"directus-postgresql-secret"` |  |
+| postgresql.auth.username | string | `"directus_postgres"` |  |
+| postgresql.enableInstallation | bool | `false` | The switch to switch off the installation of the postgresql The rest of the settings are being used during the installation and for DB connection Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
+| postgresql.postgresqlURL | string | `""` |  |
 | readinessProbe.enabled | bool | `true` |  |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
 | redis.auth.existingSecret | string | `""` | Existing secret name with Redis password |
-| redis.auth.existingSecretPasswordKey | string | `""` | The key in the secret with password  |
+| redis.auth.existingSecretPasswordKey | string | `""` | The key in the secret with password |
 | redis.enabled | bool | `true` | Switch to enable Redis |
 | redis.replica.replicaCount | int | `0` | Amount of Redis replicas |
 | replicaCount | int | `1` |  |
