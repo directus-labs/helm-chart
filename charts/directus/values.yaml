@@ -161,7 +161,7 @@ createApplicationSecret: true
 
 applicationSecretName: "directus-application-secret"
 
-# -- Database engine. Could be set to one value from the following list: mysql, postresql
+# -- Database engine. Could be set to one value from the following list: mysql, postgresql
 # Please disable installations for other database engines in this chart
 # Please not if you use mariadb server, set databaseEngine to 'mysql' value
 # Details are here - https://docs.directus.io/self-hosted/config-options.html#database
