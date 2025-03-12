@@ -161,7 +161,7 @@ createApplicationSecret: true
 
 applicationSecretName: "directus-application-secret"
 
-# -- Database engine. Could be set to one value from the following list: mysql, postresql
+# -- Database engine. Could be set to one value from the following list: mysql, postgresql
 # Please disable installations for other database engines in this chart
 # Please not if you use mariadb server, set databaseEngine to 'mysql' value
 # Details are here - https://docs.directus.io/self-hosted/config-options.html#database
@@ -176,7 +176,7 @@ createPostgresqlSecret: false
 # -- Create MySQL secret in Directus chart
 # If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created
 # Please consult the official bitnami mysql values file - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152
-# If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings setion
+# If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings section
 createMysqlSecret: true
 
 mysql:
