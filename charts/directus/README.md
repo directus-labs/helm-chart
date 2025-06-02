@@ -65,6 +65,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | mysql.auth.username | string | `"directus_mysql"` |  |
 | mysql.enableInstallation | bool | `true` | The switch to switch off the installation of the mysql The rest of the settings are being used during the installation and for DB connection Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml |
 | mysql.mysqlURL | string | `""` |  |
+| mysql.mysqlPort | string | `""` |  |
 | nameOverride | string | `""` | Helm name override in Chart.yaml. This name is being used for resource naming |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
@@ -74,6 +75,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | postgresql.auth.username | string | `"directus_postgres"` |  |
 | postgresql.enableInstallation | bool | `false` | The switch to switch off the installation of the postgresql The rest of the settings are being used during the installation and for DB connection Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
 | postgresql.postgresqlURL | string | `""` |  |
+| postgresql.postgresqlPort | string | `""` |  |
 | readinessProbe.enabled | bool | `true` |  |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
