@@ -193,6 +193,7 @@ mysql:
   # Please note mysql.auth.database will be used as a name of the database
   # and mysql.auth.username will be used as username during the connection
   mysqlURL: ""
+  mysqlPort: ""
 
 postgresql:
   # -- The switch to switch off the installation of the postgresql
@@ -208,6 +209,7 @@ postgresql:
   # Please note postgresql.auth.database will be used as a name of the database
   # and postgresql.auth.username will be used as username during the connection
   postgresqlURL: ""
+  postgresqlPort: ""
 
 redis:
   # -- Switch to enable Redis
