@@ -183,7 +183,7 @@ mysql:
   # -- The switch to switch off the installation of the mysql
   # The rest of the settings are being used during the installation and for DB connection
   # Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml
-  enableInstallation: false
+  enableInstallation: true
   auth:
     existingSecret: "directus-mysql-secret"
     database: "directus_mysql"
@@ -192,8 +192,8 @@ mysql:
   # Otherwise leave it empty to use mysql that being installed in the cluster with this chart
   # Please note mysql.auth.database will be used as a name of the database
   # and mysql.auth.username will be used as username during the connection
-  mysqlURL: "db-service"
-  mysqlPort: "3456"
+  mysqlURL: ""
+  mysqlPort: ""
 
 postgresql:
   # -- The switch to switch off the installation of the postgresql
