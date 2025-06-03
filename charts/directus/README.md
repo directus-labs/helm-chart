@@ -1,6 +1,6 @@
 # directus
 
-![Version: 2.0.0](https://img.shields.io/badge/Version-2.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.4.1](https://img.shields.io/badge/AppVersion-11.4.1-informational?style=flat-square)
+![Version: 2.0.1](https://img.shields.io/badge/Version-2.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.8.0](https://img.shields.io/badge/AppVersion-11.8.0-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -22,9 +22,9 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mysql | ~12.2.2 |
-| https://charts.bitnami.com/bitnami | postgresql | ~16.4.9 |
-| https://charts.bitnami.com/bitnami | redis | ~20.7.1 |
+| https://charts.bitnami.com/bitnami | mysql | ~13.0.0 |
+| https://charts.bitnami.com/bitnami | postgresql | ~16.7.8 |
+| https://charts.bitnami.com/bitnami | redis | ~21.1.11 |
 
 ## Values
 
@@ -64,8 +64,8 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | mysql.auth.existingSecret | string | `"directus-mysql-secret"` |  |
 | mysql.auth.username | string | `"directus_mysql"` |  |
 | mysql.enableInstallation | bool | `true` | The switch to switch off the installation of the mysql The rest of the settings are being used during the installation and for DB connection Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml |
-| mysql.mysqlURL | string | `""` |  |
 | mysql.mysqlPort | string | `""` |  |
+| mysql.mysqlURL | string | `""` |  |
 | nameOverride | string | `""` | Helm name override in Chart.yaml. This name is being used for resource naming |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
@@ -74,8 +74,8 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | postgresql.auth.existingSecret | string | `"directus-postgresql-secret"` |  |
 | postgresql.auth.username | string | `"directus_postgres"` |  |
 | postgresql.enableInstallation | bool | `false` | The switch to switch off the installation of the postgresql The rest of the settings are being used during the installation and for DB connection Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
-| postgresql.postgresqlURL | string | `""` |  |
 | postgresql.postgresqlPort | string | `""` |  |
+| postgresql.postgresqlURL | string | `""` |  |
 | readinessProbe.enabled | bool | `true` |  |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
