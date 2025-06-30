@@ -78,7 +78,7 @@ spec:
                   key: KEY
             {{- if .Values.ingress.enabled }}
             - name: PUBLIC_URL
-              value: http{{ if .Values.ingress.enableTLS }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}{{(index .Values.ingress.hosts 0).path }}
+              value: http{{ if .Values.ingress.enableTLS }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}{{(index (index .Values.ingress.hosts 0).paths 0).path }}
             {{- end }}
             {{- if .Values.redis.enabled}}
             - name: REDIS_PASSWORD
