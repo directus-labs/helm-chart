@@ -4,6 +4,18 @@
 
 replicaCount: 1
 
+# -- Deployment strategy, for example:
+# updateStrategy:
+#   type: RollingUpdate
+#   rollingUpdate:
+#     maxSurge: 25%
+#     maxUnavailable: 25%
+# -- Or:
+# updateStrategy:
+#   type: Recreate
+updateStrategy:
+  type: RollingUpdate
+
 image:
   # -- Directus image docker repository
   repository: directus/directus
