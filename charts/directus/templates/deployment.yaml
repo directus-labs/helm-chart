@@ -11,6 +11,9 @@ spec:
   selector:
     matchLabels:
       {{- include "directus.selectorLabels" . | nindent 6 }}
+  {{- if .Values.updateStrategy }}
+  strategy: {{- toYaml .Values.updateStrategy | nindent 4 }}
+  {{- end }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -75,7 +78,7 @@ spec:
                   key: KEY
             {{- if .Values.ingress.enabled }}
             - name: PUBLIC_URL
-              value: http{{ if .Values.ingress.enableTLS }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}
+              value: http{{ if .Values.ingress.enableTLS }}s{{ end }}://{{(index .Values.ingress.hosts 0).host }}{{(index (index .Values.ingress.hosts 0).paths 0).path }}
             {{- end }}
             {{- if .Values.redis.enabled}}
             - name: REDIS_PASSWORD
