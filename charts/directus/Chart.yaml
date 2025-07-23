@@ -19,8 +19,8 @@ maintainers:
     email: sindieiev@protonmail.ch
     url: https://github.com/directus-labs/helm-chart
 
-version: 2.0.3
-appVersion: "11.8.0"
+version: 2.0.4
+appVersion: "11.9.3"
 
 dependencies:
 - name: mysql
