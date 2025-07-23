@@ -1,6 +1,6 @@
 # directus
 
-![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.8.0](https://img.shields.io/badge/AppVersion-11.8.0-informational?style=flat-square)
+![Version: 2.0.4](https://img.shields.io/badge/Version-2.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.9.3](https://img.shields.io/badge/AppVersion-11.9.3-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -38,10 +38,10 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| createApplicationSecret | bool | `true` | This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets. If it is set to false, you MUST set these variables manually via existing secret resource and set its name below |
-| createMysqlSecret | bool | `true` | Create MySQL secret in Directus chart If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created. Please consult the official bitnami mysql values file - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152 If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings section |
-| createPostgresqlSecret | bool | `false` | Create PostgreSQL secret in Directus chart If set to enable, postgresql secret with values of `postgres-password`, `password`, and `replication-password` variables will be created Please consult the official bitnami postgres values file - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml#L164 If set to false, you MUST create a secret resource in k8s for postgresql installation and set the correct value to the `existingSecret` in the postgresql settings setion |
-| databaseEngine | string | `"mysql"` | Database engine. Could be set to one value from the following list: `mysql`, `postgresql`. Please disable installations for other database engines in this chart. Please note if you use mariadb server, set `databaseEngine` to `mysql` value. Details are here - https://directus.io/docs/configuration/database |
+| createApplicationSecret | bool | `true` | This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets. If it is set to false, you MUST set these variables manually via existing secret resource and set its name below. |
+| createMysqlSecret | bool | `true` | Create MySQL secret in Directus chart If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created. Please consult the official bitnami mysql values file - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152. If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings section. |
+| createPostgresqlSecret | bool | `false` | Create PostgreSQL secret in Directus chart If set to enable, postgresql secret with values of `postgres-password`, `password`, and `replication-password` variables will be created. Please consult the official bitnami postgres values file - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml#L164. If set to false, you MUST create a secret resource in k8s for postgresql installation and set the correct value to the `existingSecret` in the postgresql settings setion. |
+| databaseEngine | string | `"mysql"` | Database engine. Could be set to one value from the following list: `mysql`, `postgresql`. Please disable installations for other database engines in this chart. Please note if you use mariadb server, set `databaseEngine` to `mysql` value. Details are here - https://directus.io/docs/configuration/database. |
 | extraEnvVars | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
@@ -102,4 +102,5 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | startupProbe.httpGet.path | string | `"/"` |  |
 | startupProbe.httpGet.port | string | `"http"` |  |
 | tolerations | list | `[]` |  |
+| updateStrategy | object | `{"type":"RollingUpdate"}` | Or: updateStrategy:   type: Recreate |
 
