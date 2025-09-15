@@ -95,6 +95,8 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  # -- Service annotations. Usually used in cloud environments
+  annotations: {}
 
 ingress:
   enabled: false
