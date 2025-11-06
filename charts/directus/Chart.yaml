@@ -15,8 +15,8 @@ sources:
 icon: https://avatars.githubusercontent.com/u/79210894
 
 maintainers:
-  - name: mikesindieiev
-    email: sindieiev@protonmail.ch
+  - name: mykhailo-sindieiev
+    email: mykhailo_sindieiev@owasp.org
     url: https://github.com/directus-labs/helm-chart
 
 version: 2.0.7
