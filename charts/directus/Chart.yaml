@@ -15,23 +15,23 @@ sources:
 icon: https://avatars.githubusercontent.com/u/79210894
 
 maintainers:
-  - name: mikesindieiev
-    email: sindieiev@protonmail.ch
+  - name: mykhailo-sindieiev
+    email: mykhailo_sindieiev@owasp.org
     url: https://github.com/directus-labs/helm-chart
 
-version: 2.0.6
-appVersion: "11.11.0"
+version: 2.0.7
+appVersion: "11.13.0"
 
 dependencies:
 - name: mysql
-  version: "~13.0.0"
-  repository: "https://charts.bitnami.com/bitnami"
+  version: "~14.0.3"
+  repository: "oci://registry-1.docker.io/bitnamicharts"
   condition: mysql.enableInstallation
 - name: postgresql
-  version: "~16.7.8"
-  repository: "https://charts.bitnami.com/bitnami"
+  version: "~16.7.27"
+  repository: "oci://registry-1.docker.io/bitnamicharts"
   condition: postgresql.enableInstallation
 - name: redis
-  version: "~21.1.11"
-  repository: "https://charts.bitnami.com/bitnami"
+  version: "~23.2.6"
+  repository: "oci://registry-1.docker.io/bitnamicharts"
   condition: redis.enabled
