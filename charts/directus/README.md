@@ -1,6 +1,6 @@
 # directus
 
-![Version: 2.0.6](https://img.shields.io/badge/Version-2.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.11.0](https://img.shields.io/badge/AppVersion-11.11.0-informational?style=flat-square)
+![Version: 2.0.7](https://img.shields.io/badge/Version-2.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 11.13.0](https://img.shields.io/badge/AppVersion-11.13.0-informational?style=flat-square)
 
 A Helm chart for installing Directus on Kubernetes.
 Directus is a real-time API and App dashboard for managing SQL database content.
@@ -11,7 +11,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| mikesindieiev | <sindieiev@protonmail.ch> | <https://github.com/directus-labs/helm-chart> |
+| mykhailo-sindieiev | <mykhailo_sindieiev@owasp.org> | <https://github.com/directus-labs/helm-chart> |
 
 ## Source Code
 
@@ -22,9 +22,9 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mysql | ~13.0.0 |
-| https://charts.bitnami.com/bitnami | postgresql | ~16.7.8 |
-| https://charts.bitnami.com/bitnami | redis | ~21.1.11 |
+| oci://registry-1.docker.io/bitnamicharts | mysql | ~14.0.3 |
+| oci://registry-1.docker.io/bitnamicharts | postgresql | ~16.7.27 |
+| oci://registry-1.docker.io/bitnamicharts | redis | ~23.2.6 |
 
 ## Values
 
@@ -64,6 +64,8 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | mysql.auth.existingSecret | string | `"directus-mysql-secret"` |  |
 | mysql.auth.username | string | `"directus_mysql"` |  |
 | mysql.enableInstallation | bool | `true` | The switch to switch off the installation of the mysql. The rest of the settings are being used during the installation and for DB connection. Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml |
+| mysql.global | object | `{"security":{"allowInsecureImages":true}}` | Global security settings for mysql image. Set to true to allow insecure images from bitnamilegacy repository |
+| mysql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/mysql","tag":"9.4.0-debian-12-r1"}` | MySQL image settings |
 | mysql.mysqlPort | string | `""` |  |
 | mysql.mysqlURL | string | `""` |  |
 | nameOverride | string | `""` | Helm name override in Chart.yaml. This name is being used for resource naming |
@@ -74,6 +76,8 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | postgresql.auth.existingSecret | string | `"directus-postgresql-secret"` |  |
 | postgresql.auth.username | string | `"directus_postgres"` |  |
 | postgresql.enableInstallation | bool | `false` | The switch to switch off the installation of the postgresql. The rest of the settings are being used during the installation and for DB connection. Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
+| postgresql.global | object | `{"security":{"allowInsecureImages":true}}` | Global security settings for postgresql image. Set to true to allow insecure images from bitnamilegacy repository |
+| postgresql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/postgresql","tag":"17.6.0-debian-12-r4"}` | PostgreSQL image settings |
 | postgresql.postgresqlPort | string | `""` |  |
 | postgresql.postgresqlURL | string | `""` |  |
 | readinessProbe.enabled | bool | `true` |  |
@@ -82,6 +86,8 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | redis.auth.existingSecret | string | `""` | Existing secret name with Redis password |
 | redis.auth.existingSecretPasswordKey | string | `""` | The key in the secret with password |
 | redis.enabled | bool | `true` | Switch to enable Redis |
+| redis.global | object | `{"security":{"allowInsecureImages":true}}` | Global security settings for redis image. Set to true to allow insecure images from bitnamilegacy repository |
+| redis.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/redis","tag":"8.2.1-debian-12-r0"}` | Redis image settings |
 | redis.replica.replicaCount | int | `0` | Amount of Redis replicas |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
