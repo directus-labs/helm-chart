@@ -39,9 +39,9 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | createApplicationSecret | bool | `true` | This setting enables the creation of `ADMIN_PASSWORD`, `KEY`, and `SECRET` variables in k8s secrets. If it is set to false, you MUST set these variables manually via existing secret resource and set its name below. |
-| createMysqlSecret | bool | `true` | Create MySQL secret in Directus chart If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created. Please consult the official bitnami mysql values file - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152. If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings section. |
-| createPostgresqlSecret | bool | `false` | Create PostgreSQL secret in Directus chart If set to enable, postgresql secret with values of `postgres-password`, `password`, and `replication-password` variables will be created. Please consult the official bitnami postgres values file - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml#L164. If set to false, you MUST create a secret resource in k8s for postgresql installation and set the correct value to the `existingSecret` in the postgresql settings setion. |
-| databaseEngine | string | `"mysql"` | Database engine. Could be set to one value from the following list: `mysql`, `postgresql`. Please disable installations for other database engines in this chart. Please note if you use mariadb server, set `databaseEngine` to `mysql` value. Details are here - https://directus.io/docs/configuration/database. |
+| createMysqlSecret | bool | `true` | Create MySQL secret in Directus chart If set to enable, mysql secret with values of `mysql-root-password`, `mysql-replication-password` and `mysql-password` variables will be created. Please consult the official bitnami mysql values file - <https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml#L152>. If set to false, you MUST create a secret resource in k8s for mysql installation and set the correct value to the `existingSecret` in the mysql settings section. |
+| createPostgresqlSecret | bool | `false` | Create PostgreSQL secret in Directus chart If set to enable, postgresql secret with values of `postgres-password`, `password`, and `replication-password` variables will be created. Please consult the official bitnami postgres values file - <https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml#L164>. If set to false, you MUST create a secret resource in k8s for postgresql installation and set the correct value to the `existingSecret` in the postgresql settings setion. |
+| databaseEngine | string | `"mysql"` | Database engine. Could be set to one value from the following list: `mysql`, `postgresql`, `pg` or `postgres`. Please disable installations for other database engines in this chart. Please note if you use mariadb server, set `databaseEngine` to `mysql` value. Details are here - <https://directus.io/docs/configuration/database>. |
 | extraEnvVars | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
@@ -63,7 +63,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | mysql.auth.database | string | `"directus_mysql"` |  |
 | mysql.auth.existingSecret | string | `"directus-mysql-secret"` |  |
 | mysql.auth.username | string | `"directus_mysql"` |  |
-| mysql.enableInstallation | bool | `true` | The switch to switch off the installation of the mysql. The rest of the settings are being used during the installation and for DB connection. Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml |
+| mysql.enableInstallation | bool | `true` | The switch to switch off the installation of the mysql. The rest of the settings are being used during the installation and for DB connection. Link to the values.yaml file in bitnami repo - <https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml> |
 | mysql.global | object | `{"security":{"allowInsecureImages":true}}` | Global security settings for mysql image. Set to true to allow insecure images from bitnamilegacy repository |
 | mysql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/mysql","tag":"9.4.0-debian-12-r1"}` | MySQL image settings |
 | mysql.mysqlPort | string | `""` |  |
@@ -75,7 +75,7 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | postgresql.auth.database | string | `"directus_postgres"` |  |
 | postgresql.auth.existingSecret | string | `"directus-postgresql-secret"` |  |
 | postgresql.auth.username | string | `"directus_postgres"` |  |
-| postgresql.enableInstallation | bool | `false` | The switch to switch off the installation of the postgresql. The rest of the settings are being used during the installation and for DB connection. Link to the values.yaml file in bitnami repo - https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
+| postgresql.enableInstallation | bool | `false` | The switch to switch off the installation of the postgresql. The rest of the settings are being used during the installation and for DB connection. Link to the values.yaml file in bitnami repo - <https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml> |
 | postgresql.global | object | `{"security":{"allowInsecureImages":true}}` | Global security settings for postgresql image. Set to true to allow insecure images from bitnamilegacy repository |
 | postgresql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/postgresql","tag":"17.6.0-debian-12-r4"}` | PostgreSQL image settings |
 | postgresql.postgresqlPort | string | `""` |  |
@@ -110,4 +110,3 @@ Directus is a real-time API and App dashboard for managing SQL database content.
 | startupProbe.httpGet.port | string | `"http"` |  |
 | tolerations | list | `[]` |  |
 | updateStrategy | object | `{"type":"RollingUpdate"}` | Or: updateStrategy:   type: Recreate |
-
