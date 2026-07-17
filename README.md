@@ -17,3 +17,5 @@ helm repo add directus https://directus-labs.github.io/helm-chart/
 ## Documentation
 
 Chart documentation is found in [Directus directory](charts/directus/README.md).
+
+Upgrading across a major Directus version? See the [upgrade guide](charts/directus/UPGRADING.md) (includes Directus 12 breaking changes).
